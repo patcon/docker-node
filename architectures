@@ -1,5 +1,5 @@
 bashbrew-arch  variants
-amd64          alpine3.14,alpine3.15,bullseye,bullseye-slim,buster,buster-slim,stretch,stretch-slim
+amd64          alpine3.14,alpine3.15,bullseye,bullseye-slim,buster,buster-slim,stretch,stretch-slim,focal,focal
 arm32v6        alpine3.14,alpine3.15
 arm32v7        alpine3.14,alpine3.15,bullseye,bullseye-slim,buster,buster-slim,stretch,stretch-slim
 arm64v8        alpine3.14,alpine3.15,bullseye,bullseye-slim,buster,buster-slim,stretch,stretch-slim

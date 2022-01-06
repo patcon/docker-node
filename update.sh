@@ -173,6 +173,8 @@ function update_node_version() {
       fi
 
       sed -Ei -e 's/\$\{PYTHON_VERSION\}/'"${pythonVersion}"'/' "${dockerfile}-tmp"
+    elif is_ubuntu "${variant}"; then
+      sed -Ei -e "s/(buildpack-deps:)name/\\1${variant}/" "${dockerfile}-tmp"
     elif is_debian "${variant}"; then
       sed -Ei -e "s/(buildpack-deps:)name/\\1${variant}/" "${dockerfile}-tmp"
     elif is_debian_slim "${variant}"; then
@@ -222,7 +224,9 @@ for version in "${versions[@]}"; do
     update_variant=$(in_variants_to_update "${variant}")
     template_file="${parentpath}/Dockerfile-${variant}.template"
 
-    if is_debian "${variant}"; then
+    if is_ubuntu "${variant}"; then
+      template_file="${parentpath}/Dockerfile-ubuntu.template"
+    elif is_debian "${variant}"; then
       template_file="${parentpath}/Dockerfile-debian.template"
     elif is_debian_slim "${variant}"; then
       template_file="${parentpath}/Dockerfile-slim.template"
